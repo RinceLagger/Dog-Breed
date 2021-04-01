@@ -1,10 +1,13 @@
 import React from "react";
-import { getImages } from "../../../services/infoDog.service";
 import { useParams } from "react-router-dom";
-import ImageList from "../../ImageList/ImageList";
-import Button from "../../Button/Button";
+/* service */
+import { getImages } from "../../services/infoDog.service";
+/* components */
+import Suspense from "../../components/Suspense/Suspense";
+import ImageList from "../../components/ImageList/ImageList";
+import Button from "../../components/Button/Button";
 
-export default function DogImages() {
+function DogImages() {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [images, setImages] = React.useState([]);
@@ -27,17 +30,18 @@ export default function DogImages() {
   React.useEffect(() => getDogsImages(), [getDogsImages]);
 
   return (
-    <>
-      {error ? (
-        <p>An error ocurred, refresh the page</p>
-      ) : loading ? (
-        <p>Loading images...</p>
-      ) : (
-        <>
-          <Button path={"/"} />
-          <ImageList images={images} breed={breed} />
-        </>
-      )}
-    </>
+    <Suspense
+      error={error}
+      loading={loading}
+      errorFallback={<p>An error ocurred, refresh the page</p>}
+      loadingFallback={<p>Loading images...</p>}
+    >
+      <>
+        <Button path="/" />
+        <ImageList images={images} breed={breed} />
+      </>
+    </Suspense>
   );
 }
+
+export default DogImages;

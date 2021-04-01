@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "../../Button/Button";
+/* components */
+import Button from "../../components/Button/Button";
 
 const PageNotFound = () => {
   return (

@@ -1,17 +1,20 @@
 import React from "react";
-import SelectDogForm from "../../SelectDogForm/SelectDogForm";
+/* external modules */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
+/* components */
+import SelectDogForm from "../../components/SelectDogForm/SelectDogForm";
+/* styles */
 import "./SelectDog.css";
 
-const paw = <FontAwesomeIcon icon={faPaw} size="6x" />;
-
-export default function SelectDog() {
+function SelectDog() {
   return (
     <div className="container-home">
-      {paw}
+      <FontAwesomeIcon icon={faPaw} size="6x" />;
       <h1>Choose your favourite Dog Breed!</h1>
       <SelectDogForm />
     </div>
   );
 }
+
+export default SelectDog;
