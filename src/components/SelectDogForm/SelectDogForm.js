@@ -11,12 +11,11 @@ import { useDogs } from "../../context/DogContext";
 import "./SelectDogForm.css";
 
 function SelectDogForm() {
-  const initialState = "select a dog breed";
+  const initialState = "affenpinscher";
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const { dogs, setDogs } = useDogs();
-  const [selection, setSelection] = React.useState("select a dog breed");
-  const hasSelectedDog = selection !== initialState;
+  const [selection, setSelection] = React.useState(initialState);
   const dogBreeds = getDogBreeds(dogs);
   const history = useHistory();
 
@@ -26,9 +25,8 @@ function SelectDogForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (hasSelectedDog) {
-      history.push(`/images/${selection}`);
-    }
+
+    history.push(`/images/${selection}`);
   };
 
   const getDogs = React.useCallback(async () => {
