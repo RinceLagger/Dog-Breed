@@ -1,15 +1,19 @@
 import React from "react";
+/* external modules */
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle as backIcon } from "@fortawesome/free-solid-svg-icons";
+/* styles */
 import "./Button.css";
 
-const backIcon = <FontAwesomeIcon icon={faTimesCircle} size="4x" />;
-
-export default function Button({ path }) {
+function Button({ path }) {
   return (
     <Link to={`${path}`}>
-      <button className="back-button">{backIcon}</button>
+      <button className="back-button">
+        <FontAwesomeIcon icon={backIcon} size="4x" />
+      </button>
     </Link>
   );
 }
+
+export default Button;

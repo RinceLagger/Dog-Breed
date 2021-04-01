@@ -6,8 +6,4 @@ const dogApi = axios.create({
 
 export const getAllDogs = () => dogApi.get("/breeds/list/all");
 
-export const getImages = (breed) => {
-  const path = breed.concat("/images");
-
-  return dogApi.get(`/breed/${path}`);
-};
+export const getImages = (breed) => dogApi.get(`/breed/${breed}/images`);
